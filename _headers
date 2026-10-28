@@ -1,0 +1,31 @@
+# Netlify / Cloudflare Pages
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/assets/css/*
+  Cache-Control: public, max-age=604800
+
+/assets/js/main.js
+  Cache-Control: public, max-age=604800
+
+/assets/js/form.js
+  Cache-Control: public, max-age=604800
+
+/assets/js/obrigado.js
+  Cache-Control: public, max-age=604800
+
+/assets/js/config.js
+  Cache-Control: no-cache
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=2592000
+
+/obrigado/*
+  X-Robots-Tag: noindex, nofollow

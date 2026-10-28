@@ -1,0 +1,105 @@
+# Apache / Hostinger - www.flaviotomazi.com.br
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+  AddDefaultCharset utf-8
+  AddCharset utf-8 .html .css .js .txt .xml .webmanifest
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Força HTTPS e www (só no domínio de produção; não afeta testes locais)
+  RewriteCond %{HTTP_HOST} ^flaviotomazi\.com\.br$ [NC,OR]
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} flaviotomazi\.com\.br$ [NC]
+  RewriteRule ^ https://www.flaviotomazi.com.br%{REQUEST_URI} [L,R=301,NE]
+
+  # Arquivos de trabalho que não devem ser servidos
+  RewriteRule ^(scripts|docs)(/|$) - [R=404,L]
+  RewriteRule ^assets/img/original(/|$) - [R=404,L]
+  RewriteRule ^(README\.md|_redirects|_headers)$ - [R=404,L]
+
+  # Endereços antigos do Wix (blog). Ver docs/DEPLOY.md
+  RewriteRule ^blog/?$ / [L,R=301]
+  RewriteRule ^blog-feed\.xml$ / [L,R=301]
+  RewriteRule ^single-post/.*cirurgia-ortogn /cirurgia-ortognatica/ [L,R=301,NC]
+  RewriteRule ^single-post/.*meu-rosto-parece-torto /cirurgia-ortognatica/ [L,R=301,NC]
+  RewriteRule ^single-post/ / [L,R=301]
+  RewriteRule ^post/ / [L,R=301]
+
+  # /index.html -> / (evita conteúdo duplicado)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+  RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301]
+
+  # Barra final nas páginas (/cirurgia-ortognatica -> /cirurgia-ortognatica/)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [L,R=301]
+</IfModule>
+
+# Compressão
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json application/ld+json application/manifest+json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json application/ld+json application/manifest+json image/svg+xml
+</IfModule>
+
+# Cache: HTML e config.js sempre revalidados; CSS/JS 7 dias (o ?v= com hash do conteúdo,
+# atualizado por scripts/sincronizar-blocos.py, força o download da versão nova); fontes 1 ano
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "^config\.js$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(avif|webp|png|jpe?g|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Segurança básica
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+  # Página de obrigado fora do índice
+  <If "%{REQUEST_URI} =~ m#^/obrigado/#">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
+</IfModule>
