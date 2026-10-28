@@ -16,19 +16,20 @@ Na Vercel, o `.vercelignore` já tira esses arquivos do deploy. No Apache, o `.h
 ## 2. Opções de hospedagem
 
 ### Vercel (hospedagem atual do projeto)
-O repositório já está ligado ao projeto `juliano-duit/flavio-tomazi` na Vercel: cada push no branch `main` publica em produção e cada PR gera um link de preview.
+O repositório já está ligado ao projeto `juliano-duit/flavio-tomazi` na Vercel. A `main` é o branch de produção: cada push nela publica o site, e cada PR ou outro branch gera um link de preview.
 
-1. Em **Settings > Build and Deployment**, deixe Framework Preset **Other**, Build Command vazio e Output Directory vazio (raiz do projeto).
-2. O `vercel.json` cuida de:
+1. **Branch de produção:** em **Settings > Environments > Production > Branch Tracking** (em versões antigas do painel, **Settings > Git > Production Branch**), confirme que o branch é `main`. No GitHub, em **Settings > General > Default branch**, deixe `main` como padrão. O projeto foi criado quando o único branch do repositório era `claude/exciting-meitner-jyqj4l`, então a Vercel pode ter registrado esse branch como produção.
+2. Em **Settings > Build and Deployment**, deixe Framework Preset **Other**, Build Command vazio e Output Directory vazio (raiz do projeto).
+3. O `vercel.json` cuida de:
    - barra final nas URLs (`trailingSlash`), por exemplo `/cirurgia-ortognatica` vira `/cirurgia-ortognatica/`;
    - redirecionamento de `flaviotomazi.com.br` para `www.flaviotomazi.com.br`;
    - `/index.html` para `/`;
    - redirecionamentos do blog antigo (seção 4);
    - cabeçalhos de segurança, cache (CSS e JS 7 dias, `config.js` sempre revalidado, fontes 1 ano, imagens 30 dias) e `noindex` na `/obrigado/`.
-3. A `404.html` da raiz é usada automaticamente. HTTPS e compressão (gzip/brotli) são automáticos.
-4. O `.vercelignore` tira do deploy `scripts/`, `docs/`, `assets/img/original/`, `README.md` e os arquivos de outras hospedagens. Depois do primeiro deploy, abra `https://www.flaviotomazi.com.br/docs/DEPLOY.md`: deve dar 404.
-5. A Vercel responde aos redirecionamentos permanentes com o código 308, que o Google trata como o 301.
-6. **Domínio:** em **Settings > Domains**, adicione `www.flaviotomazi.com.br` e `flaviotomazi.com.br`. Defina o `www` como principal e o domínio sem www como "Redirect to www.flaviotomazi.com.br" (o `vercel.json` também faz esse redirecionamento, como garantia). A Vercel mostra os registros DNS a criar, normalmente:
+4. A `404.html` da raiz é usada automaticamente. HTTPS e compressão (gzip/brotli) são automáticos.
+5. O `.vercelignore` tira do deploy `scripts/`, `docs/`, `assets/img/original/`, `README.md` e os arquivos de outras hospedagens. Depois do primeiro deploy, abra `https://www.flaviotomazi.com.br/docs/DEPLOY.md`: deve dar 404.
+6. A Vercel responde aos redirecionamentos permanentes com o código 308, que o Google trata como o 301.
+7. **Domínio:** em **Settings > Domains**, adicione `www.flaviotomazi.com.br` e `flaviotomazi.com.br`. Defina o `www` como principal e o domínio sem www como "Redirect to www.flaviotomazi.com.br" (o `vercel.json` também faz esse redirecionamento, como garantia). A Vercel mostra os registros DNS a criar, normalmente:
    - `A` em `@` apontando para o IP indicado pela Vercel;
    - `CNAME` em `www` apontando para o endereço `*.vercel-dns.com` indicado pela Vercel.
 
