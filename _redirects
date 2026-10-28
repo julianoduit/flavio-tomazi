@@ -1,0 +1,19 @@
+# Netlify / Cloudflare Pages
+# O redirecionamento de domínio (sem www -> www, http -> https) é configurado no painel
+# da hospedagem. Ver docs/DEPLOY.md.
+
+# Endereços antigos do Wix (blog)
+/blog                     /                          301
+/blog/                    /                          301
+/blog-feed.xml            /                          301
+/single-post/2017/05/29/cirurgia-ortogn%C3%A1tica   /cirurgia-ortognatica/   301
+/single-post/2017/05/29/cirurgia-ortognática        /cirurgia-ortognatica/   301
+/single-post/2018/02/05/meu-rosto-parece-torto-o-que-pode-ser-e-o-que-posso-fazer   /cirurgia-ortognatica/   301
+/single-post/*            /                          301
+/post/*                   /                          301
+
+# Arquivos de trabalho que não devem ser servidos (Netlify; no Cloudflare Pages, exclua do deploy)
+/scripts/*                /404.html                  404!
+/docs/*                   /404.html                  404!
+/assets/img/original/*    /404.html                  404!
+/README.md                /404.html                  404!

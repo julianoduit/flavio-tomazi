@@ -1,0 +1,26 @@
+<meta name="theme-color" content="#1f1f1f">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/img/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script src="/assets/js/config.js?v=0"></script>
+<script>
+(function(){var d=document.documentElement;d.className+=' js';
+window.dataLayer=window.dataLayer||[];window.gtag=function(){window.dataLayer.push(arguments);};
+var c=null;try{c=window.localStorage.getItem('ft_consentimento');}catch(e){}
+var g=c==='granted'?'granted':'denied';
+gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);
+var cfg=window.SITE_CONFIG||{},id=cfg.GTM_ID;if(!id)return;
+function carregar(){if(window.__gtmCarregado)return;window.__gtmCarregado=true;
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',id);}
+if(cfg.GTM_CARREGAMENTO==='imediato'||d.hasAttribute('data-gtm-imediato')){carregar();return;}
+var evs=['pointerdown','keydown','touchstart','scroll','mousemove'];
+function gatilho(){evs.forEach(function(e){window.removeEventListener(e,gatilho,true);});carregar();}
+evs.forEach(function(e){window.addEventListener(e,gatilho,{capture:true,passive:true});});
+window.addEventListener('load',function(){setTimeout(carregar,cfg.GTM_ATRASO_MS||3500);});
+})();
+</script>
