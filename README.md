@@ -29,6 +29,7 @@ Depois abra http://localhost:8080.
 │   ├── fonts/                          Montserrat (variável) e Yellowtail, WOFF2 self-hosted
 │   └── img/                            Imagens otimizadas (WebP e AVIF) e originais do Wix
 ├── robots.txt, sitemap.xml, llms.txt, llms-full.txt, site.webmanifest, favicon.ico
+├── vercel.json, .vercelignore          Vercel (hospedagem atual): redirecionamentos, cabeçalhos e exclusões do deploy
 ├── .htaccess                           Apache/Hostinger
 ├── _redirects, _headers                Netlify/Cloudflare Pages
 ├── docs/
@@ -102,7 +103,7 @@ Preencha `docs/classificar-antes-depois.md` com o procedimento de cada caso. Dep
 4. Reescreva as seções mantendo o padrão: H2 em forma de pergunta, `p.resposta-direta` com a resposta em 2 ou 3 frases, depois o detalhamento. Seções reaproveitáveis: `.hero` + `.hero-foto`, `.lista-sinais`, `.prosa` com `.autoria`, `.passos.seis`, `.duas-colunas`, `.galeria`, `.sobre-grid`, `.faq`, `#agendar`, `#localizacao`.
 5. Atualize a data de revisão (`.autoria` e `lastReviewed`).
 6. Adicione a URL no `sitemap.xml`, no `llms.txt` e no `llms-full.txt`, e um link no card correspondente da home (`card-link`), como o de ortognática.
-7. Se houver redirecionamento antigo do blog para esse tema, aponte para a nova LP no `.htaccess` e no `_redirects`.
+7. Se houver redirecionamento antigo do blog para esse tema, aponte para a nova LP no `vercel.json`, no `.htaccess` e no `_redirects`.
 8. Rode `python3 scripts/sincronizar-blocos.py` e `python3 scripts/verificar-faq.py` (adicione a nova página na lista `PAGINAS` do script).
 
 ## Pendências: [CONFIRMAR COM O DR]
@@ -133,7 +134,7 @@ Os pontos abaixo estão marcados com comentários `[CONFIRMAR COM O DR]` ou `[VA
 - [ ] Resolver ou aceitar as pendências acima
 - [ ] Preencher `LEAD_WEBHOOK_URL` (`docs/DEPLOY.md`, seção 6)
 - [ ] Rodar `python3 scripts/sincronizar-blocos.py` e `python3 scripts/verificar-faq.py`
-- [ ] Publicar sem `scripts/`, `docs/`, `assets/img/original/` e `README.md` (`docs/DEPLOY.md`, seção 1)
+- [ ] Publicar sem `scripts/`, `docs/`, `assets/img/original/` e `README.md` (na Vercel, o `.vercelignore` já faz isso; ver `docs/DEPLOY.md`, seções 1 e 2)
 - [ ] Apontar o domínio e ativar HTTPS (`docs/DEPLOY.md`, seção 3)
 - [ ] Conferir redirecionamentos do blog antigo (`docs/DEPLOY.md`, seção 4)
 - [ ] Configurar e publicar o GTM (`docs/GTM-SETUP.md`)

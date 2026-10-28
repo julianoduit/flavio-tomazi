@@ -11,9 +11,28 @@ Publique a pasta do projeto inteira, **exceto**:
 - `assets/img/original/` (imagens originais do Wix, 30 MB, usadas só para gerar as otimizadas)
 - `README.md`
 
-O `.htaccess` (Apache) e o `_redirects` (Netlify) já bloqueiam esses caminhos com 404 caso sejam enviados por engano.
+Na Vercel, o `.vercelignore` já tira esses arquivos do deploy. No Apache, o `.htaccess` bloqueia esses caminhos com 404; na Netlify, o `_redirects` faz o mesmo.
 
 ## 2. Opções de hospedagem
+
+### Vercel (hospedagem atual do projeto)
+O repositório já está ligado ao projeto `juliano-duit/flavio-tomazi` na Vercel: cada push no branch `main` publica em produção e cada PR gera um link de preview.
+
+1. Em **Settings > Build and Deployment**, deixe Framework Preset **Other**, Build Command vazio e Output Directory vazio (raiz do projeto).
+2. O `vercel.json` cuida de:
+   - barra final nas URLs (`trailingSlash`), por exemplo `/cirurgia-ortognatica` vira `/cirurgia-ortognatica/`;
+   - redirecionamento de `flaviotomazi.com.br` para `www.flaviotomazi.com.br`;
+   - `/index.html` para `/`;
+   - redirecionamentos do blog antigo (seção 4);
+   - cabeçalhos de segurança, cache (CSS e JS 7 dias, `config.js` sempre revalidado, fontes 1 ano, imagens 30 dias) e `noindex` na `/obrigado/`.
+3. A `404.html` da raiz é usada automaticamente. HTTPS e compressão (gzip/brotli) são automáticos.
+4. O `.vercelignore` tira do deploy `scripts/`, `docs/`, `assets/img/original/`, `README.md` e os arquivos de outras hospedagens. Depois do primeiro deploy, abra `https://www.flaviotomazi.com.br/docs/DEPLOY.md`: deve dar 404.
+5. A Vercel responde aos redirecionamentos permanentes com o código 308, que o Google trata como o 301.
+6. **Domínio:** em **Settings > Domains**, adicione `www.flaviotomazi.com.br` e `flaviotomazi.com.br`. Defina o `www` como principal e o domínio sem www como "Redirect to www.flaviotomazi.com.br" (o `vercel.json` também faz esse redirecionamento, como garantia). A Vercel mostra os registros DNS a criar, normalmente:
+   - `A` em `@` apontando para o IP indicado pela Vercel;
+   - `CNAME` em `www` apontando para o endereço `*.vercel-dns.com` indicado pela Vercel.
+
+   Crie esses registros no DNS atual (Wix, Registro.br ou outro), seguindo os cuidados da seção 3.
 
 ### Hostinger (Apache)
 1. hPanel > **Sites** > **Gerenciador de arquivos**, pasta `public_html`.
@@ -37,6 +56,7 @@ O `.htaccess` (Apache) e o `_redirects` (Netlify) já bloqueiam esses caminhos c
 1. Descubra onde o DNS está: consulte `flaviotomazi.com.br` em https://registro.br/tecnologia/ferramentas/whois/ e veja os servidores DNS. Se forem `ns*.wixdns.net`, o DNS está no Wix.
 2. **Antes de trocar**, anote todos os registros DNS atuais no Wix (Domínios > Gerenciar registros DNS), principalmente MX, TXT (verificação do Google Search Console, Meta, e-mail) e CNAME de outros serviços. Eles precisam ser recriados no novo DNS.
 3. Escolha o novo DNS:
+   - **Vercel**: mantenha o DNS onde está e crie os registros `A` e `CNAME` que a Vercel indicar em **Settings > Domains** (ou troque os servidores DNS no Registro.br para `ns1.vercel-dns.com` e `ns2.vercel-dns.com` e recrie os outros registros na Vercel).
    - **Hostinger**: no Registro.br, troque os servidores DNS para os da Hostinger (`ns1.dns-parking.com` e `ns2.dns-parking.com`, confira no hPanel) e adicione o domínio no hPanel.
    - **Netlify**: use Netlify DNS ou, mantendo outro DNS, crie `CNAME www -> <seu-site>.netlify.app` e `A @ -> 75.2.60.5`.
    - **Cloudflare**: adicione o domínio na Cloudflare, ela importa os registros; troque os servidores DNS no Registro.br pelos informados.
@@ -46,7 +66,7 @@ O `.htaccess` (Apache) e o `_redirects` (Netlify) já bloqueiam esses caminhos c
 
 ## 4. Blog do Wix (`/blog`)
 
-O site antigo tem um blog com 9 posts (de 2017 e 2018). O site novo não tem blog, então os endereços antigos recebem redirecionamento 301, já configurado no `.htaccess` e no `_redirects`:
+O site antigo tem um blog com 9 posts (de 2017 e 2018). O site novo não tem blog, então os endereços antigos recebem redirecionamento permanente, já configurado no `vercel.json`, no `.htaccess` e no `_redirects`:
 
 | Post antigo | Destino |
 |---|---|

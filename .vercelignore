@@ -1,0 +1,8 @@
+# Arquivos que não devem ir para o deploy na Vercel
+scripts/
+docs/
+assets/img/original/
+README.md
+.htaccess
+_redirects
+_headers
