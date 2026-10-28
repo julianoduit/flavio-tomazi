@@ -13,10 +13,10 @@
     { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/blog/", "destination": "/", "permanent": true },
     { "source": "/blog-feed.xml", "destination": "/", "permanent": true },
-    { "source": "/single-post/2017/05/29/:slug*", "destination": "/cirurgia-ortognatica/", "permanent": true },
-    { "source": "/single-post/2018/02/05/:slug*", "destination": "/cirurgia-ortognatica/", "permanent": true },
-    { "source": "/single-post/:path*", "destination": "/", "permanent": true },
-    { "source": "/post/:path*", "destination": "/", "permanent": true }
+    { "source": "/single-post/2017/05/29/(.*)", "destination": "/cirurgia-ortognatica/", "permanent": true },
+    { "source": "/single-post/2018/02/05/(.*)", "destination": "/cirurgia-ortognatica/", "permanent": true },
+    { "source": "/single-post/(.*)", "destination": "/", "permanent": true },
+    { "source": "/post/(.*)", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
