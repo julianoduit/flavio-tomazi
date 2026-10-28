@@ -107,6 +107,8 @@ Preencha `docs/classificar-antes-depois.md` com o procedimento de cada caso. Dep
 
 ## Pendências: [CONFIRMAR COM O DR]
 
+Fontes já consultadas: o site antigo no Wix (home, os 9 posts do blog e os dados estruturados). Dele saíram as coordenadas exatas (geohash do link do Waze do Dr.: -28.67597, -49.35932), a internação de 1 dia na ortognática, o sorriso gengival como indicação de ortognática e os detalhes dos cards de siso, harmonização e trauma. O site antigo não informa horário, convênios, RQE nem CEP.
+
 Os pontos abaixo estão marcados com comentários `[CONFIRMAR COM O DR]` ou `[VALIDAÇÃO JURÍDICA]` no HTML. Para encontrar todos: busque por `CONFIRMAR` no projeto.
 
 | # | Pendência | Onde |
@@ -115,17 +117,16 @@ Os pontos abaixo estão marcados com comentários `[CONFIRMAR COM O DR]` ou `[VA
 | 2 | Horário de atendimento | Localização (home e LP), schema (`openingHoursSpecification`, ainda não incluído), texto "horário comercial" da `/obrigado/` |
 | 3 | Convênios aceitos (ex.: Unimed) | FAQ da home e da LP |
 | 4 | CEP 88811-550: obtido na base dos Correios (ViaCEP) para a Rua Cruz e Souza até o nº 499, bairro Pio Corrêa | Localização, rodapé, schema, `llms.txt` |
-| 5 | Coordenadas do schema (`geo`: -28.6759, -49.3578) são do trecho da rua no OpenStreetMap; trocar pelas coordenadas exatas do Perfil da Empresa no Google | JSON-LD da home |
-| 6 | Quais procedimentos são feitos no consultório e quais no hospital | FAQ da home |
-| 7 | Se algum convênio exige encaminhamento | FAQ da home |
-| 8 | LP: prazos de recuperação, afastamento e dieta; acessos da cirurgia (cicatriz); cobertura do plano; critério de idade; tempo de internação; duração do preparo ortodôntico | FAQ e etapas da LP |
-| 9 | Classificar as 20 fotos de antes e depois por procedimento e confirmar a autorização escrita de cada paciente | `docs/classificar-antes-depois.md` |
-| 10 | Card "Cirurgia estética da face (rejuvenescimento de face e pescoço)": texto mantido do site antigo; confirmar se os procedimentos ofertados estão dentro do permitido ao cirurgião-dentista pela Resolução CFO 230/2020, que veda alguns procedimentos estéticos da face (como ritidoplastia/face lifting) | Home, schema `availableService` |
-| 11 | Valores de conversão por procedimento (definir com o time de mídia) | `config.js` |
-| 12 | Política de privacidade: controlador (CPF ou CNPJ), bases legais, prazo de retenção e lista de ferramentas | `politica-de-privacidade/index.html` |
-| 13 | Avaliações reais do Google para o bloco de depoimentos (sem schema de review até lá) | Home, seção "O que dizem os pacientes" |
-| 14 | Link do Perfil da Empresa no Google: hoje é o link curto `https://g.co/kgs/nUxCNwR`; se possível, usar a URL completa do Maps | Schema `sameAs`, botões de rota e avaliações |
-| 15 | ID e rótulo das conversões do Google Ads (`AW-720963502` foi visto no contêiner atual) | `docs/GTM-SETUP.md` |
+| 5 | Quais procedimentos são feitos no consultório e quais no hospital (o blog antigo já confirma harmonização na clínica e ortognática em hospital; falta confirmar siso, implantes, enxertos e biópsias) | FAQ da home |
+| 6 | Se algum convênio exige encaminhamento | FAQ da home |
+| 7 | LP: prazos de recuperação, afastamento e dieta; acessos da cirurgia (cicatriz); cobertura do plano; critério de idade; duração do preparo ortodôntico. A internação de 1 dia veio do post do Dr. de 2017 e só precisa ser revalidada | FAQ e etapas da LP |
+| 8 | Classificar as 20 fotos de antes e depois por procedimento e confirmar a autorização escrita de cada paciente | `docs/classificar-antes-depois.md` |
+| 9 | Card "Cirurgia estética da face (rejuvenescimento de face e pescoço)": texto mantido do site antigo; confirmar se os procedimentos ofertados estão dentro do permitido ao cirurgião-dentista pela Resolução CFO 230/2020, que veda alguns procedimentos estéticos da face (como ritidoplastia/face lifting) | Home, schema `availableService` |
+| 10 | Valores de conversão por procedimento (definir com o time de mídia) | `config.js` |
+| 11 | Política de privacidade: controlador (CPF ou CNPJ), bases legais, prazo de retenção e lista de ferramentas | `politica-de-privacidade/index.html` |
+| 12 | Avaliações reais do Google para o bloco de depoimentos (sem schema de review até lá) | Home, seção "O que dizem os pacientes" |
+| 13 | Perfil da Empresa no Google: o schema usa o identificador estável do perfil (`kgmid=/g/11hzr545n1`), tirado do link do site antigo. Os botões de rota e avaliações seguem com o link curto `https://g.co/kgs/nUxCNwR` | Schema `sameAs`, botões |
+| 14 | ID e rótulo das conversões do Google Ads (`AW-720963502` foi visto no contêiner atual) | `docs/GTM-SETUP.md` |
 
 ## Checklist de deploy
 

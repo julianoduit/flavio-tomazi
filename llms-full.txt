@@ -33,7 +33,7 @@ Mais informações: https://www.flaviotomazi.com.br/cirurgia-ortognatica/
 
 *Terceiros molares inclusos*
 
-Remoção dos dentes do siso que não nasceram, nasceram tortos ou causam dor, inflamação ou falta de espaço na boca.
+Remoção dos dentes do siso que não nasceram, nasceram tortos ou causam dor. Mesmo sem dor, o siso preso no osso pode formar cistos e prejudicar o dente vizinho.
 
 #### Dor e estalo na mandíbula
 
@@ -63,13 +63,13 @@ Procedimentos cirúrgicos para rejuvenescimento da face e do pescoço, planejado
 
 *Harmonização orofacial*
 
-Técnicas de harmonização orofacial e microcirurgias estéticas para o equilíbrio e a proporção do rosto.
+Toxina botulínica, preenchimento com ácido hialurônico, bichectomia e microcirurgias estéticas, planejados para o equilíbrio e a proporção do rosto.
 
 #### Trauma facial
 
 *Fraturas e ferimentos da face*
 
-Tratamento de fraturas e ferimentos na face causados por acidentes, quedas ou agressões, com atendimento hospitalar quando necessário.
+Tratamento de fraturas e ferimentos na face causados por acidentes, quedas ou agressões, com fixação por placas e parafusos de titânio e atendimento hospitalar quando necessário.
 
 #### Cirurgias orais
 
@@ -164,7 +164,7 @@ Na primeira consulta, o Dr. Flávio ouve suas queixas, faz o exame clínico e av
 
 #### Quais procedimentos são feitos no consultório e quais no hospital?
 
-Procedimentos de menor porte, como extração de siso, implantes dentários, enxertos ósseos localizados e biópsias, costumam ser feitos no consultório, com anestesia local. Cirurgias de maior porte, como a cirurgia ortognática e o tratamento de fraturas da face, são feitas em ambiente hospitalar. A indicação depende de cada caso e é definida na avaliação.
+Procedimentos de menor porte, como extração de siso, implantes dentários, enxertos ósseos localizados, biópsias e harmonização facial, costumam ser feitos no consultório, com anestesia local. Cirurgias de maior porte, como a cirurgia ortognática e o tratamento de fraturas da face, são feitas em ambiente hospitalar. A indicação depende de cada caso e é definida na avaliação.
 
 #### Preciso de encaminhamento do dentista?
 
@@ -207,6 +207,7 @@ A cirurgia ortognática é indicada para quem tem a mordida desencaixada ou desp
 - **Assimetria facial**: Um lado do rosto ou o queixo parece desviado.
 - **Respiração pela boca, ronco ou apneia**: Quando a posição da mandíbula estreita a passagem de ar.
 - **Desconforto na ATM**: Dor, estalos ou cansaço na articulação da mandíbula associados à mordida.
+- **Mostra muita gengiva ao sorrir**: Quando a causa é o crescimento vertical excessivo da maxila.
 
 Só a avaliação confirma se a cirurgia é indicada para você.
 
@@ -238,7 +239,7 @@ Com o seu ortodontista, os dentes são alinhados para que a mordida encaixe apó
 
 #### Cirurgia em hospital
 
-A cirurgia é feita em ambiente hospitalar, sob anestesia geral, seguindo o planejamento.
+A cirurgia é feita em ambiente hospitalar, sob anestesia geral, seguindo o planejamento. A internação costuma ser de 1 dia.
 
 #### Recuperação
 
@@ -311,7 +312,7 @@ A cirurgia costuma ser indicada depois que o crescimento dos ossos da face termi
 
 #### Quanto tempo fico internado?
 
-A cirurgia ortognática é feita em hospital, e a internação costuma ser curta. O tempo exato depende do tipo de cirurgia e da recuperação de cada paciente e é informado no planejamento.
+A cirurgia ortognática é feita em hospital, e a internação costuma ser de 1 dia. O tempo pode variar conforme o tipo de cirurgia e a recuperação de cada paciente e é confirmado no planejamento.
 
 ### Agende sua avaliação
 
